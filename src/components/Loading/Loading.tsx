@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import css from "./Loading.module.css";
 import Text from "../Text";
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return createPortal(
     <div className={css.loading}>
       <LoaderCircle id="loader" size="small" />

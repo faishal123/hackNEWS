@@ -37,7 +37,7 @@ const getDataFromLocalStorage = (): DataFromLocalStorageType => {
   return prevDataParsed;
 };
 
-export const useGetAllTitles = () => {
+export const useGetAllTitles = ({ onError }) => {
   const [idsToGet, setIdsToGet] = useState<number[]>([]);
   const [totalAmount, setTotalAmount] = useState<number>(1);
 
@@ -67,8 +67,8 @@ export const useGetAllTitles = () => {
       }
       setIdsToGet((prev) => prev?.filter((prevId) => prevId !== id));
     },
-    onError: (e) => {
-      console.log(e, "error get all title");
+    onError: () => {
+      onError({ message: "An error has occured" });
     },
   });
 
@@ -78,8 +78,8 @@ export const useGetAllTitles = () => {
       setTotalAmount(dataToSet?.length);
       setIdsToGet(dataToSet);
     },
-    onError: (e) => {
-      console.log(e);
+    onError: () => {
+      onError({ message: "An error has occured" });
     },
   });
 
@@ -158,7 +158,7 @@ const fetchMultipleStoriesFunction: fetchMultipleStoriesType = async (
   }
 };
 
-export const useFetchTopStories = () => {
+export const useFetchTopStories = ({ onError }) => {
   const [idsToGet, setIdsToGet] = useState<IdsToGetType>([]);
   const [datasToShow, setDatasToShow] = useState<StoryType[]>([]);
   const [search, setSearch] = useState<string>("");
@@ -176,6 +176,7 @@ export const useFetchTopStories = () => {
       if (res.data) {
         if (isObjectEmpty(res.data)) {
           setIdsToGet([]);
+          onError({ message: "Response Empty" });
         } else {
           setIdsToGet(Object.values(res.data));
         }
@@ -183,6 +184,7 @@ export const useFetchTopStories = () => {
         if ((res.error as Error).name === "AbortError") {
           console.error(res.error);
         } else {
+          onError({ message: "An error has occured" });
           setIdsToGet([]);
         }
       }

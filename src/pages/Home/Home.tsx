@@ -8,10 +8,12 @@ import {
   Text,
   Loading,
   LoaderCircle,
+  Notification,
 } from "src/components";
 import css from "./Home.module.css";
 
 const Component = () => {
+  const [renderNotification, setRenderNotification] = useState({ message: "" });
   const {
     data,
     loading,
@@ -20,15 +22,26 @@ const Component = () => {
     search,
     urlSearch,
     setSearch,
-  } = useFetchTopStories();
+  } = useFetchTopStories({
+    onError: (e) => setRenderNotification({ message: e }),
+  });
 
-  const { progress } = useGetAllTitles();
+  const { progress } = useGetAllTitles({
+    onError: (e) => setRenderNotification({ message: e }),
+  });
   const fetchAllComplete = progress === 100;
-
-  console.log(new Response());
 
   return (
     <>
+      {!!renderNotification && (
+        <Notification
+          id="notification"
+          message={renderNotification?.message}
+          onClose={() => {
+            setRenderNotification({ message: "" });
+          }}
+        />
+      )}
       {loading ? <Loading /> : null}
       <BackgroundWrapper>
         <div className={css.homeContainer}>
@@ -68,7 +81,11 @@ const Component = () => {
               return <SingleItem key={d?.id} d={d} />;
             })
           ) : (
-            <div></div>
+            <div>
+              <Text id="txt-story-not-found" size="xxlarge" variant="thin">
+                Story Not Found
+              </Text>
+            </div>
           )}
           {!urlSearch && (
             <div className={css.buttonContainer}>

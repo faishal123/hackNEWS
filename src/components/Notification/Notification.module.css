@@ -1,0 +1,41 @@
+.containerNotification{
+  display: flex;
+  width: 400px;
+  position: fixed;
+  top: 24px;
+  z-index: 100;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #efefef;
+  box-shadow: 0px 5px 10px #000;
+  word-break: break-word;
+  right:50%;
+  margin-right: -200px;
+  background:#CF6679;
+}
+
+.wrapperContent{
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.closeButton{
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight:bold;
+}
+
+.wrapMessage{
+  flex: 1;
+  font-size: 16px;
+}
+
+@media (max-width: 600px){
+  .containerNotification{
+    width:90vw;
+    margin-right:-45vw;
+  }
+}
