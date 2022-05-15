@@ -7,7 +7,7 @@ import Text from "../Text";
 const Loading = () => {
   return createPortal(
     <div className={css.loading}>
-      <LoaderCircle size="small" />
+      <LoaderCircle id="loader" size="small" />
       <Text id="txt-loading-label" variant="medium">
         Loading
       </Text>

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Text from "../Text";
+import { isObjectEmpty } from "src/functions/object";
 import { StoryType } from "src/pages/Home/interface";
 import css from "./SingleItem.module.css";
 
@@ -11,10 +12,12 @@ export const parseHTML = (text: string | null, document: Document) => {
 };
 
 type SingleItemProps = {
-  d: StoryType;
+  d?: StoryType;
 };
 
 const SingleItem: React.FC<SingleItemProps> = ({ d }) => {
+  const dataEmpty = isObjectEmpty(d);
+  const id = d?.id;
   const title = d?.title;
   const text = d?.text || "";
   const textParsed = !title ? parseHTML(text, document) : "";
@@ -22,36 +25,43 @@ const SingleItem: React.FC<SingleItemProps> = ({ d }) => {
   const urlExist = !!url;
 
   const renderContent = () => {
+    if (dataEmpty) {
+      return null;
+    }
     return (
       <>
         <div className={css.singleStory}>
           <div className="margin--medium-b">
             {title ? (
-              <Text id="txt-title" block size="large" variant="bold">
+              <Text id={`txt-title-${id}`} block size="large" variant="bold">
                 {title}
               </Text>
             ) : (
-              <Text id="txt-text" variant="medium" block size="medium">
+              <Text id={`txt-text-${id}`} variant="medium" block size="medium">
                 {textParsed || ""}
               </Text>
             )}
           </div>
-          <Text id="txt-creator-label" size="small" variant="light">
+          <Text id={`txt-creator-label-${id}`} size="small" variant="light">
             By:{" "}
           </Text>
-          <Text id="txt-creator" size="small" variant="regular">
-            {d?.by || ""}
+          <Text id={`txt-creator-${id}`} size="small" variant="regular">
+            {d.by || ""}
           </Text>
-          {d?.descendants ? (
+          {d.descendants ? (
             <>
-              <Text id="txt-separator" size="small" variant="black">
+              <Text id={`txt-separator-${id}`} size="small" variant="black">
                 {" "}
                 |{" "}
               </Text>
-              <Text id="txt-comments" size="small" variant="regular">
-                {`${d?.descendants} `}
+              <Text id={`txt-comments-${id}`} size="small" variant="regular">
+                {`${d.descendants} `}
               </Text>
-              <Text id="txt-comments-label" size="small" variant="light">
+              <Text
+                id={`txt-comments-label-${id}`}
+                size="small"
+                variant="light"
+              >
                 Comments
               </Text>
             </>
@@ -66,8 +76,10 @@ const SingleItem: React.FC<SingleItemProps> = ({ d }) => {
   }
 
   return (
-    <Link key={d?.id} passHref href={url || ""} target="_blank">
-      <a target={"_blank"}>{renderContent()}</a>
+    <Link key={d.id} passHref href={url}>
+      <a data-testid={`link-${id}`} target={"_blank"}>
+        {renderContent()}
+      </a>
     </Link>
   );
 };

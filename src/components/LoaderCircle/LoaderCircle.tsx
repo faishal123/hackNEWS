@@ -12,6 +12,7 @@ const dimentionMap = {
 };
 
 type LoaderCircleProps = {
+  id: string;
   size?:
     | "xsmall"
     | "small"
@@ -22,10 +23,11 @@ type LoaderCircleProps = {
     | "xxxlarge";
 };
 
-const LoaderCircle: React.FC<LoaderCircleProps> = ({ size = "small" }) => {
+const LoaderCircle: React.FC<LoaderCircleProps> = ({ size = "small", id }) => {
   const sizeToUse = dimentionMap[size];
   return (
     <div
+      data-testid={id}
       style={{
         width: `${sizeToUse}px`,
         height: `${sizeToUse}px`,

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useDebounce(val: string, delay: number) {
+export function useDebounce(val: string | number, delay: number) {
   const [debouncedVal, setDebouncedVal] = useState(val);
   useEffect(() => {
     const timeOutHandler = setTimeout(() => setDebouncedVal(val), delay);
@@ -9,7 +9,7 @@ export function useDebounce(val: string, delay: number) {
   }, [delay, val]);
 
   if (typeof debouncedVal === "string") {
-    return debouncedVal?.toLowerCase();
+    return debouncedVal.toLowerCase();
   }
 
   return debouncedVal;

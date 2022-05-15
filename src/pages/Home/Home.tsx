@@ -25,6 +25,8 @@ const Component = () => {
   const { progress } = useGetAllTitles();
   const fetchAllComplete = progress === 100;
 
+  console.log(new Response());
+
   return (
     <>
       {loading ? <Loading /> : null}
@@ -54,7 +56,7 @@ const Component = () => {
             />
             {fetchAllComplete ? null : (
               <div className={css.getAllProgress}>
-                <LoaderCircle size="xsmall" />
+                <LoaderCircle id="loaderProgress" size="xsmall" />
                 <Text id="txt-fetch-search-data" size="small">
                   Fetching Search Data ({`${progress}`}%)
                 </Text>
