@@ -17,7 +17,7 @@ type SingleItemProps = {
 const SingleItem: React.FC<SingleItemProps> = ({ d }) => {
   const title = d?.title;
   const text = d?.text || "";
-  const textParsed = parseHTML(text, document);
+  const textParsed = !title ? parseHTML(text, document) : "";
   const url = d?.url;
   const urlExist = !!url;
 
