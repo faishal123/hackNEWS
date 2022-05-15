@@ -1,0 +1,75 @@
+.text{
+  color:#efefef;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  line-height: 125%;
+}
+
+.color-white{
+  color:#efefef
+}
+
+.color-orange{
+  color:#FEC260;
+}
+
+.color-black{
+  color:#202020;
+}
+
+.size-xxsmall{
+  font-size:10px;
+}
+.size-xsmall{
+  font-size:12px;
+}
+.size-small{
+  font-size:14px;
+}
+.size-medium{
+  font-size:16px;
+}
+.size-large{
+  font-size:18px;
+}
+.size-xlarge{
+  font-size:20px;
+}
+.size-xxlarge{
+  font-size:24px;
+}
+.size-xxxlarge{
+  font-size:28px;
+}
+.size-xxxxlarge{
+  font-size:32px;
+}
+.size-xxxxxlarge{
+  font-size:36px;
+}
+ 
+.variant-thin{ 
+  font-weight: 100;
+} 
+.variant-light{ 
+  font-weight: 300;
+}
+.variant-regular{ 
+  font-weight: 400;
+} 
+.variant-medium{ 
+  font-weight: 500;
+} 
+.variant-bold{ 
+  font-weight: 700;
+} 
+.variant-black{ 
+  font-weight: 900;
+} 
+
+.display-block{
+  display:block;
+}
+.display-inline{
+  display:inline;
+}

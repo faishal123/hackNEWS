@@ -1,0 +1,15 @@
+.singleStory{
+  padding:20px;
+  background:#303030;
+  margin-bottom:20px;
+  border-radius:10px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  transition:0.2s;
+  border:1px solid transparent;
+}
+
+.singleStory:hover{
+  border:1px solid #FEC260; 
+  transition:0.2s;
+}

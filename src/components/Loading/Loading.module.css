@@ -1,0 +1,14 @@
+
+
+.loading{
+  padding:15px;
+  background:#303030;
+  border:1px solid #606060;
+  border-radius:5px;
+  position:fixed;
+  bottom:40px;
+  right:40px;
+  display:flex;
+  gap:10px;
+  align-items: center;
+}

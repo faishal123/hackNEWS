@@ -1,0 +1,48 @@
+.homeContainer{
+  max-width: 1024px;
+  margin:auto;
+}
+
+.buttonContainer{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.logoContainer{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.inputAndProgressContainer{
+  display:flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap:10px;
+  
+}
+
+.getAllProgress{
+  display:flex;
+  align-items: center;
+  border:1px solid #505050;
+  box-sizing: border-box;
+  padding:0 10px;
+  gap:10px;
+  border-radius:5px;
+  width: 50%;
+}
+
+@media (max-width:480px) {
+  .inputAndProgressContainer {
+    display: block; 
+  }
+
+  .getAllProgress{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+  }
+}
+

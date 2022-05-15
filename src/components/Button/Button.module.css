@@ -1,0 +1,18 @@
+.button{
+  outline:none;
+  border:none;
+  padding:15px 20px;
+  border-radius:5px;
+  width:100%;
+  background:#FEC260;
+  font-weight:700;
+  color:#202020;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.button:hover{
+  background:#e7ab4c;
+  transition:0.2s;
+}
